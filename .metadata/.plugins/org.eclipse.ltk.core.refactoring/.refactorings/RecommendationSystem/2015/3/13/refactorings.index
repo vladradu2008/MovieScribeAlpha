@@ -1,3 +1,16 @@
 1427398334964	Move file
 1427399282719	Copy compilation unit
 1427399286973	Delete element
+1427400293884	Move 'spring-social.xml' to 'WEB-INF'
+1427402161196	Delete element
+1427474163355	Move compilation unit
+1427474188972	Move compilation unit
+1427474211206	Rename package 'Facebook.Controllers.dsa'
+1427474219900	Rename package 'Facebook'
+1427476909343	Move 'index.jsp' to 'WEB-INF'
+1427476941623	Rename resource 'index.jsp'
+1427477268169	Rename resource 'spring-config.xml'
+1427477558970	Delete element
+1427477901628	Rename type 'HelloWorldController'
+1427569175553	Delete element
+1427570140658	Delete element

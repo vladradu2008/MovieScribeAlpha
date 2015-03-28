@@ -1,0 +1,29 @@
+package facebook;
+
+import java.util.Random;
+
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionSignUp;
+import org.springframework.social.connect.web.SignInAdapter;
+import org.springframework.web.context.request.NativeWebRequest;
+
+public class SocialContext implements ConnectionSignUp, SignInAdapter{
+    private static Random rand = null;
+    private final UserCookieGenerator userCookieGenerator;
+    
+    public SocialContext() {
+    	
+    }
+	public String signIn(String arg0, Connection<?> arg1, NativeWebRequest arg2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String execute(Connection<?> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+}

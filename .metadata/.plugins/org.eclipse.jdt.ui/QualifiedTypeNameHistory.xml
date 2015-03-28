@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="org.springframework.social.connect.ConnectionFactoryLocator"/>
+<fullyQualifiedTypeName name="org.springframework.social.connect.support.ConnectionFactoryRegistry"/>
+<fullyQualifiedTypeName name="org.springframework.social.facebook.connect.FacebookConnectionFactory"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="org.springframework.ui.ModelMap"/>
+<fullyQualifiedTypeName name="org.springframework.social.connect.ConnectionSignUp"/>
+<fullyQualifiedTypeName name="org.springframework.social.connect.web.SignInAdapter"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="org.springframework.social.facebook.api.Facebook"/>
+<fullyQualifiedTypeName name="org.springframework.social.connect.UsersConnectionRepository"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="org.springframework.social.connect.ConnectionRepository"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,17 @@
+package facebook;
+
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@RestController
+public class OverallController {
+ 
+	@RequestMapping("/login")
+    public String hello(ModelMap model) {
+ 
+            
+	   return "login";
+    }
+
+}
