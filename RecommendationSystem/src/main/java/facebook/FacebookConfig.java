@@ -21,80 +21,60 @@ import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
+
 @Configuration
 public class FacebookConfig implements InitializingBean {
-private static final Logger logger = LoggerFactory.logger(FacebookConfig.class);
-private static final String appId = "439291719425239";
-private static final String appSecret = "65646c3846ab46f0b44d73bb26087f06";
-private SocialContext socialContext;
-private UsersConnectionRepository usersConnectionRepositiory;
-@Inject
-private DataSource dataSource;
-/**
-* Point to note: the name of the bean is either the name of the method
-* "socialContext" or can be set by an attribute
-*
-* @Bean(name="myBean")
-*/
-@Bean
-public SocialContext socialContext() {
-return socialContext;
-}
-@Bean
-public ConnectionFactoryLocator connectionFactoryLocator() {
-logger.info("getting connectionFactoryLocator");
-ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
-registry.addConnectionFactory(new FacebookConnectionFactory(appId, appSecret));
-return registry;
-}
-/**
-* Singleton data access object providing access to connections across all
-* users.
-*/
-@Bean
-public UsersConnectionRepository usersConnectionRepository() {
-return usersConnectionRepositiory;
-}
-/**
-* Request-scoped data access object providing access to the current user's
-* connections.
-*/
-@Bean
-@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
-public ConnectionRepository connectionRepository() {
-String userId = socialContext.getUserId();
-logger.info("Createung ConnectionRepository for user: " + userId);
-return usersConnectionRepository().createConnectionRepository(userId);
-}
-/**
-* A proxy to a request-scoped object representing the current user's
-* primary Facebook account.
-*
-* @throws NotConnectedException
-* if the user is not connected to facebook.
-*/
-@Bean
-@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
-public Facebook facebook() {
-return connectionRepository().getPrimaryConnection(Facebook.class).getApi();
-}
-/**
-* Create the ProviderSignInController that handles the OAuth2 stuff and
-* tell it to redirect back to /posts once sign in has completed
-*/
-@Bean
-public ProviderSignInController providerSignInController() {
-ProviderSignInController providerSigninController = new ProviderSignInController(connectionFactoryLocator(),
-usersConnectionRepository(), socialContext);
-providerSigninController.setPostSignInUrl("/posts");
-return providerSigninController;
-}
-public void afterPropertiesSet() throws Exception {
-	JdbcUsersConnectionRepository usersConnectionRepositiory = new JdbcUsersConnectionRepository(dataSource,
-			connectionFactoryLocator(), Encryptors.noOpText());
-			socialContext = new SocialContext(usersConnectionRepositiory, new UserCookieGenerator(), facebook());
-			usersConnectionRepositiory.setConnectionSignUp(socialContext);
-			this.usersConnectionRepositiory = usersConnectionRepositiory;
+	private static final  Logger         logger        = LoggerFactory.logger(FacebookConfig.class);
+	private static final  String         appId         = "342271702646179";
+	private static final  String         appSecret     = "b2e2b9339f9c5af80fc7649327d5d933";
+	private               SocialContext  socialContext;
+	private UsersConnectionRepository usersConnectionRepositiory;
+	@Inject
+	private DataSource dataSource;
 	
-}
+	@Bean
+	public SocialContext socialContext() {
+		return socialContext;
+	}
+	
+	@Bean
+	public ConnectionFactoryLocator connectionFactoryLocator() {
+		logger.info("getting connectionFactoryLocator");
+		ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
+		registry.addConnectionFactory(new FacebookConnectionFactory(appId, appSecret));
+		return registry;
+	}
+	
+	@Bean
+	public UsersConnectionRepository usersConnectionRepository() {
+		return usersConnectionRepositiory;
+	}
+	
+	@Bean
+	@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
+	public ConnectionRepository connectionRepository() {
+		String userId = socialContext.getUserId();
+		logger.info("Createung ConnectionRepository for user: " + userId);
+		return usersConnectionRepository().createConnectionRepository(userId);
+	}
+	@Bean
+	@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
+	public Facebook facebook() {
+		return connectionRepository().getPrimaryConnection(Facebook.class).getApi();
+	}
+	@Bean
+	public ProviderSignInController providerSignInController() {
+		ProviderSignInController providerSigninController = new ProviderSignInController(connectionFactoryLocator(),
+		usersConnectionRepository(), socialContext);
+		providerSigninController.setPostSignInUrl("/posts");
+		return providerSigninController;
+	}
+	public void afterPropertiesSet() throws Exception {
+		JdbcUsersConnectionRepository usersConnectionRepositiory = new JdbcUsersConnectionRepository(dataSource,
+		connectionFactoryLocator(), Encryptors.noOpText());
+		socialContext = new SocialContext(usersConnectionRepositiory, new UserCookieGenerator(), facebook());
+		usersConnectionRepositiory.setConnectionSignUp(socialContext);
+		this.usersConnectionRepositiory = usersConnectionRepositiory;
+		
+	}
 }
