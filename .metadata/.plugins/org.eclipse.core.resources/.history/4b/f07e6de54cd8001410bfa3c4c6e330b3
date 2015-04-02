@@ -1,0 +1,10 @@
+package omdbAPI;
+
+public class OmdbAPI {
+	private InputStream input;
+
+	public static void main(String[] args) {
+		
+	}
+
+}

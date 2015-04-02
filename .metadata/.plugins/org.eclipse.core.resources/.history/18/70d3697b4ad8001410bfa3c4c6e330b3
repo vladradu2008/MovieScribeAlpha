@@ -1,0 +1,59 @@
+package entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import dto.UserDetails;
+
+@Entity
+@Table (name="MOVIES")
+public class MovieEntity {	
+	
+	@Id @GeneratedValue
+	private int movieId;
+	
+	private String title;
+	
+	private String plot;
+	
+	private String avatarURL;
+	
+	private int rating;
+	
+	
+	
+	public int getMovieId() {
+		return movieId;
+	}
+
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	
+	@Override
+	public String toString() {
+		return title;
+	}
+}

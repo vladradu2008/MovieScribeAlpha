@@ -9,7 +9,8 @@
 <h2>This application requires you to sign in to Facebook</h2>
 <form action="<c:url value="/signin/facebook" />" method="POST">
 <button type="submit">Sign in with Facebook</button>
-<input type="hidden" name="scope" value="email,publish_stream,offline_access,read_stream" />
+<input type="hidden" name="scope" value="email,public_profile,user_likes" />
 </form>
+Afisez ceva ${ceva}.
 </body>
 </html>

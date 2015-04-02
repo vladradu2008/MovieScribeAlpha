@@ -1,0 +1,19 @@
+package omdbAPI;
+
+import java.io.InputStream;
+
+public class OmdbAPI {
+	private InputStream inputStream;
+	
+	
+	public void findByTitle(String title) {
+		title = title.replace("\\s+", "+");
+		InputStream input = new URL("http://www.omdbapi.com/?t=" + 
+		                             URLEncoder.encode(title, "UTF-8")).openStream();
+	}
+
+	public static void main(String[] args) {
+		
+	}
+
+}

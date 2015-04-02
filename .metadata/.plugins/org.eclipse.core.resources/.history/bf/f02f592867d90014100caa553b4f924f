@@ -1,0 +1,7 @@
+package facebookAPI;
+
+
+@RestController
+public class TestController {
+
+}

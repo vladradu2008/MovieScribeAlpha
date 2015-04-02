@@ -1,0 +1,8 @@
+package entities;
+
+
+@Entity
+@TableName("Movie")
+public class MovieEntity {
+
+}

@@ -1,0 +1,13 @@
+package facebookAPI;
+
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class TestController {
+	@RequestMapping(value = "/greeting", method = POST, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String greetingJson(HttpEntity<String> httpEntity) {
+	    String json = httpEntity.getBody();
+	}
+}
