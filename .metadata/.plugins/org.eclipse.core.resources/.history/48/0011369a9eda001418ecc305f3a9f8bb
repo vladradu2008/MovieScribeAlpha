@@ -1,0 +1,44 @@
+package omdbAPI;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+public class OmdbAPI {
+	
+	private OmdbAPI() {
+	}
+	
+	public static Map<String, String> findById(int id){
+		
+		try {
+			String idS = String.valueOf(id);
+			while(idS.length()<6) {
+				idS="0"+idS;
+			}
+			InputStream input = new URL("http://www.omdbapi.com/?i=tt0" + 
+			                             URLEncoder.encode(idS, "UTF-8") +
+			                             "&plot=short&r=json").openStream();
+			Map<String, String> map = new Gson().fromJson(new InputStreamReader(input, "UTF-8"), 
+										                  new TypeToken<Map<String, 
+										                  String>>(){}.getType());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return map;
+		
+	}
+
+}
