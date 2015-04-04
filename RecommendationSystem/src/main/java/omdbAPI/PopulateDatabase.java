@@ -32,6 +32,8 @@ public class PopulateDatabase {
 				
 				if (i < 1000000) {
 					id = "tt0" + Integer.toString(i);
+				} else {
+					id = "tt" + Integer.toString(i);
 				}
 				params.put("id", id);
 			
@@ -48,8 +50,6 @@ public class PopulateDatabase {
 			}
 			
 			session.getTransaction().commit();
-			MovieEntity movie1 = (MovieEntity) session.get(MovieEntity.class ,"tt0125000");
-			System.out.println(movie1.getPlot());
 			session.close();
 																																			
 		} catch (Exception e) {

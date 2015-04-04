@@ -13,8 +13,8 @@ import entity.MovieEntity;
 public class DataProvider {
 
 	private SessionFactory sessionFactory;
-	Session session;
-	Criteria criteria;
+	private Session session;
+	private Criteria criteria;
 	
 	public DataProvider() {
 		sessionFactory = new Configuration().configure().buildSessionFactory();
