@@ -28,8 +28,8 @@ public class PopulateDatabase {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 
-			for (int i = 125000; i <= 125100; i++) {
-				
+			for (int i = 125401; i <= 125500; i++) {
+
 				if (i < 1000000) {
 					id = "tt0" + Integer.toString(i);
 				} else {
